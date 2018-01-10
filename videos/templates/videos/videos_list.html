@@ -6,16 +6,26 @@
 {% block content %}
 
 <h1>Videos List</h1>
-<div class="row">
+
 {% for video in videos_list %}
 	<!-- 16:9 aspect ratio -->
-	<div class="col-6 col-md-4">
-		<div>{{ video.title }}</div>
-		<div class="embed-responsive embed-responsive-16by9">
-		  <iframe class="embed-responsive-item" src="{{ video.url }}?rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<div class="row">
+		<div class="col-6 col-md-4">
+			<div>{{ video.title }}</div>
+			<div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="{{ video.url }}?rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="col-6 col-md-8">
+			Questions
+			<div>
+				{% for question in video.question_set.all %}
+					<div>Question {{ question.id}}: {{ question.question }}</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 {% endfor %}
-</div>
+
 
 {% endblock %}

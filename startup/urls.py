@@ -21,5 +21,9 @@ from startup import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'^videos/', include('videos.urls', namespace='videos'))
+    url(r'^videos/', include('videos.urls', namespace='videos')),
+    # API
+
+    url(r'^api/$', views.RootAPIView.as_view(), name='root-api'),
+    url(r'^api/videos/', include('videos.api.urls', namespace='videos-api')),
 ]
