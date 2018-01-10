@@ -1,5 +1,8 @@
 from django import views
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def home(request):
-	return HttpResponse('Startup')
+	template = 'home.html'
+	context = {}
+	return render(request, template, context)
